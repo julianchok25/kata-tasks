@@ -1,0 +1,39 @@
+/* Colors */
+$black: #333;
+$white-one: #fff;
+$white-two: #f5f5f5;
+$white-three: #eaeaea;
+$pale-grey: #f6f8fa;
+$very-light-pink: #ccc;
+$very-light-pink-two: #f2f2f2;
+$grey-carbon: #d6d6d6;
+$carbon-200: #e3e3e3;
+$brown-grey: #999999;
+$brown-grey-two: #858585;
+$brownish-grey: #666666;
+$brownish-grey-two: #5c5c5c;
+$brown-grey-three: #adadad;
+$light-blue-grey: #c4d4e3;
+$medium-blue: #3483fa;
+$main-product: #ffdb15;
+$active-product: #00a650;
+$gray93: #ededed;
+
+/* breakpoints */
+$breakpoint-mobile: 360px;
+$breakpoint-tablet: 600px;
+$breakpoint-desktop: 1100px;
+
+/* Reset values */
+html {
+	height: 100%;
+	width: 100%;
+	font-size: 62.5%;
+	background-color: $gray93;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
