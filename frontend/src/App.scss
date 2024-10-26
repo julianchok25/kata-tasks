@@ -1,1 +1,8 @@
-@import './assets/scss/main.scss';
+@use './assets/scss/main.scss';
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 50px;
+}

@@ -1,0 +1,22 @@
+.create-form {
+    display: flex;
+    flex-direction: column;
+
+    input {
+        width: 350px;
+        padding: 10px;
+        margin-bottom: 10px;
+        border-bottom: 2px solid;
+        outline: none;
+    }
+
+    button {
+        padding: 10px;
+        background-color: black;
+        color: white;
+        cursor: pointer;
+        margin-top: 10px;
+        border-radius: 5px;
+    }
+    
+}

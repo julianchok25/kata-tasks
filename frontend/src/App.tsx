@@ -1,13 +1,11 @@
-import { useState } from 'react'
 import './App.scss'
+import Home from './pages/Home'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>Hola</div>
-    </>
+    <main className='main-container'>
+      <Home></Home>
+    </main>
   )
 }
 

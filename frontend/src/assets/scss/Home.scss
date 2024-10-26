@@ -1,0 +1,58 @@
+.home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &__title {
+        font-size: 2rem;
+        margin-bottom: 20px;
+    }
+
+    &__observation {
+        font-size: 1.5rem;
+    }
+
+    .task {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-color: black;
+        color: white;
+        width: 345px;
+        padding: 5px 10px;
+        margin-top: 10px;
+        border: 1px solid;
+
+        &__icon {
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        .checkbox {
+            display: flex;
+            align-items: center;
+
+            &__icon {
+                margin-right: 15px;
+            }
+
+            .desc-container {
+
+                &--line-through {
+                    text-decoration: line-through;
+                }
+            }
+        }
+
+        &__buttons {
+            display: flex;
+            justify-content: space-between;
+            width: 100px;
+
+            button {
+                padding: 5px;
+                cursor: pointer;
+            }
+        }
+    }
+}

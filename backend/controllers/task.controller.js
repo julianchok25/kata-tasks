@@ -5,17 +5,18 @@ export const getTasks = async (_, res) => {
     try {
         const tasks = await Task.find({});
         res.status(200)
-        .json({ success: true, data: tasks });
+        .json({ success: true, tasks });
     } catch (error) {
         res.status(500)
         .json({ success: false, message: `Server Error on Fetch: ${error.message}` });
     }
 }
 
-export const createTask = async (req, res) => {
-    const task = req.body;
+export const createTask = async (req, res) => {  
+    const task = req.body.data;
 
-    if (!task.title || !task.description) {
+    if (!task.title && !task.description) {
+        console.error('Task title and description are required.');
         return res.status(400)
         .json({ success: false, message: 'Task title and description are required.' });
     }
@@ -38,16 +39,18 @@ export const createTask = async (req, res) => {
 
 export const updateTask = async (req, res) => {
     const {id} = req.params;
-    const task = req.body;
+    const task = req.body.data;
 
-    if (!task.title || !task.description) {
-        return res.status(400)
-        .json({ success: false, message: 'Task title and description are required.' });
+    if (!task.completed) {
+        if (!task.title || !task.description) {
+            return res.status(400)
+            .json({ success: false, message: 'Task title and description are required.' });
+        }    
     }
 
     if (!mongoose.Types.ObjectId.isValid(id)) {
         return res.status(404)
-        .json({ success: false, message: 'Invalid Task I NOT FOUND' });
+        .json({ success: false, message: 'Invalid Task ID NOT FOUND' });
     }
 
     try {
