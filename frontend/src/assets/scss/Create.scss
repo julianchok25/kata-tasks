@@ -4,7 +4,7 @@
     align-items: center;
     margin-bottom: 20px;
     width: 500px;
-    height: 25vh;
+    height: auto;
     padding: 20px;
     background-color: #ededed;
     border: 2px solid black;
@@ -14,12 +14,31 @@
         margin-bottom: 10px;
     }
 
+    label {
+        width: 350px;
+        margin: 5px 0;
+
+        span {
+            font-size: 12px;
+            color: red;
+        }
+    }
+
+    .border-error {
+        border: 2px solid red;
+    }
+
     input {
         width: 350px;
         padding: 10px;
-        margin-bottom: 10px;
         border-bottom: 2px solid;
         outline: none;
+    }
+
+    &--error {
+        width: 350px;
+        color: red;
+        margin: 5px 0 10px 0;
     }
 
     button {
@@ -28,7 +47,7 @@
         background-color: #333;
         color: white;
         cursor: pointer;
-        margin-top: 10px;
+        margin-top: 20px;
         border-radius: 5px;
 
         &:hover {
