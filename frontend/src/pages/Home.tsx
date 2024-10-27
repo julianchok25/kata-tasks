@@ -40,10 +40,12 @@ function Home() {
       <h1 className="home__title">Task Management App</h1>
       <Create onCreate={handleCreateTask}/>
       {isEdit && <EditTask task={taskSelected} onUpdate={onUpdate} />}
-      <h2>Task List</h2>
       {
         tasks.length === 0 ? <p className="home__observation">No Records 😕</p> :
-        <List tasks={tasks} onEditIcon={handleEdit} onUpdateValues={onUpdate} />
+        <div className="task-list">
+          <h2>Task List</h2>
+          <List tasks={tasks} onEditIcon={handleEdit} onUpdateValues={onUpdate} />
+        </div>
       }
     </section>
   )

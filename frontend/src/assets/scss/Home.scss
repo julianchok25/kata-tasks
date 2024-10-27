@@ -11,4 +11,17 @@
     &__observation {
         font-size: 1.5rem;
     }
+
+    .task-list {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        width: 500px;
+        height: auto;
+        padding: 20px;
+        background-color: #ededed;
+        border: 2px solid black;
+        border-radius: 8px;
+    }
 }

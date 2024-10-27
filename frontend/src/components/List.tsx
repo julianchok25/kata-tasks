@@ -8,13 +8,13 @@ function List(
     {tasks: TaskModel[], onEditIcon: (id: unknown) => void, onUpdateValues: () => void}
 ) {
 
-    const handleCompleted = (id: unknown) => {
-        axios.put(`http://localhost:3000/tasks/${id}`, {
+    const handleCompleted = (task: TaskModel) => {
+        axios.put(`http://localhost:3000/tasks/${task._id}`, {
           headers: {
             'Content-Type': 'application/json'
           },
           data: {
-            completed: true
+            completed: task.completed ? false : true
           }
         })
         .then(() => {
@@ -40,7 +40,7 @@ function List(
     tasks.map((task, index) => {
         return (
           <article className="task" key={index}>
-            <div className="checkbox" onClick={() => handleCompleted(task._id)}>
+            <div className="checkbox" onClick={() => handleCompleted(task)}>
               {task.completed ?
                 <BsFillCheckCircleFill className="icons-container__icon checkbox__icon"/> : 
                 <BsCircleFill className="icons-container__icon checkbox__icon" />

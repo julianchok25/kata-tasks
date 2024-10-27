@@ -41,13 +41,6 @@ export const updateTask = async (req, res) => {
     const {id} = req.params;
     const task = req.body.data;
 
-    if (!task.completed) {
-        if (!task.title || !task.description) {
-            return res.status(400)
-            .json({ success: false, message: 'Task title and description are required.' });
-        }    
-    }
-
     if (!mongoose.Types.ObjectId.isValid(id)) {
         return res.status(404)
         .json({ success: false, message: 'Invalid Task ID NOT FOUND' });
