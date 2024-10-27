@@ -53,5 +53,11 @@
         &:hover {
             background-color: black;
         }
+
+        &:disabled {
+            cursor: not-allowed;
+            background-color: #ededed;
+            color: black;
+        }
     }
 }

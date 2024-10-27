@@ -25,6 +25,8 @@ function Create(props: {onCreate: () => void}) {
   };
 
   const handleCreateTask = () => {
+    console.log('Creating task...');
+    
     axios.post('http://localhost:3000/tasks', {
       headers: {
         'Content-Type': 'application/json'
@@ -56,7 +58,7 @@ function Create(props: {onCreate: () => void}) {
       <input  className={error.descriptionError ? 'border-error': ''} type="text" name='task-description' value={description} placeholder='Description' onChange={(e) => handleDescChange(e)} />
       {error.descriptionError && <span className='create-form--error'>{error.descriptionError}</span>}
   
-      <button type='button' onClick={handleCreateTask}>Add</button>
+      <button disabled={(!!error.titleError || !title) || (!!error.descriptionError || !description)} type='button' onClick={handleCreateTask}>Add</button>
     </article>
   )
 }
