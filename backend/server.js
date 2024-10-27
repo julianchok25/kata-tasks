@@ -13,9 +13,14 @@ const PORT = process.env.PORT || 3000;
 // Allow JSON data in the body of the request
 app.use(express.json());
 // CORS
-app.use(cors({origin: '*'}));
+app.use(cors({ origin: '*' }));
 // ROUTES
 app.use('/tasks', taskRoutes);
+app.use('/login', (_req, res) => {
+    res.json({
+        token: 'test123'
+    });
+});
 
 app.listen(PORT, () => {
     connectDB();
