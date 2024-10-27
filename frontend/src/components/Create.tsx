@@ -25,8 +25,6 @@ function Create(props: {onCreate: () => void}) {
   };
 
   const handleCreateTask = () => {
-    console.log('Creating task...');
-    
     axios.post('http://localhost:3000/tasks', {
       headers: {
         'Content-Type': 'application/json'
