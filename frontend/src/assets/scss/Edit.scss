@@ -1,7 +1,18 @@
 .edit-form {
     display: flex;
     flex-direction: column;
+    align-items: center;
     margin-bottom: 20px;
+    width: 500px;
+    height: 25vh;
+    padding: 20px;
+    background-color: #ededed;
+    border: 2px solid black;
+    border-radius: 8px;
+
+    &__title {
+        margin-bottom: 10px;
+    }
 
     input {
         width: 350px;
@@ -13,10 +24,15 @@
 
     button {
         padding: 10px;
-        background-color: black;
+        width: 50%;
+        background-color: #333;
         color: white;
         cursor: pointer;
         margin-top: 10px;
         border-radius: 5px;
+
+        &:hover {
+            background-color: black;
+        }
     }
 }
