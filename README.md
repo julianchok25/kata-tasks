@@ -4,14 +4,16 @@
 
 Frontend and Backend requires [Node.js](https://nodejs.org/) v20+ to run.
 
-Install the dependencies and start the server on each terminal.
+Install the dependencies and start the server on **each terminal**.
 
+**New Terminal 1**
 ```sh
 cd backend
 npm i
 npm run dev
 ```
 
+**New Terminal 2**
 ```sh
 cd frontend
 npm i
