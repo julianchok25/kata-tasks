@@ -32,10 +32,8 @@ npm run dev
 * frontend: 5173
 
 ## Routes
-```
-Only base path /
-The same path includes `Login Page` and `Home Page`
-```
+* Only base path /
+    * The same path includes `Login Page` and `Home Page`
 
 ## Pages
 1. Login
