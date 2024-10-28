@@ -19,6 +19,13 @@ cd frontend
 npm i
 npm run dev
 ```
+
+**On navigator**
+Set url:
+```sh
+http://localhost:5173/
+```
+
 ## Tech Stack
 * Node.js v20+
 * ExpressJs
