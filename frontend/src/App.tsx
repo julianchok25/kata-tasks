@@ -1,11 +1,11 @@
-import { useState } from 'react';
 import { Route, Routes } from 'react-router-dom'
 import './App.scss'
 import Home from './pages/Home'
 import Login from './pages/Login'
+import useToken from './hooks/useToken';
 
 function App() {
-  const [token, setToken] = useState<String>();
+  const { token, setToken } = useToken();
 
   if (!token) {
     return <Login setToken={setToken} />

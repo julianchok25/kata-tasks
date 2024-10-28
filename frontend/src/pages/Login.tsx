@@ -4,7 +4,7 @@ import axios from 'axios';
 
 function Login({ setToken }: { setToken: (token: string) => void }) {
     const [username, setUserName] = useState<string>();
-    const [password, setPassword] = useState<String>();
+    const [password, setPassword] = useState<String | any>();
 
     const handleSubmit = async (e: any) => {
         e.preventDefault();
@@ -30,13 +30,13 @@ function Login({ setToken }: { setToken: (token: string) => void }) {
         <div className="login-wrapper">
             <h1>Please Log In</h1>
             <form className='form-container' onSubmit={handleSubmit}>
-                <label htmlFor="username">Username</label>
-                <input type="text" placeholder="write your username" id='username' onChange={(e) => setUserName(e.target.value)} />
+                <label htmlFor="username">Username <span>*</span></label>
+                <input type="text" value={username} placeholder="write your username" id='username' onChange={(e) => setUserName(e.target.value)} />
 
-                <label htmlFor="username">Username</label>
-                <input type="password" placeholder="write your password" id="password" onChange={(e) => setPassword(e.target.value)} />
+                <label htmlFor="password">Password <span>*</span></label>
+                <input type="password" value={password} placeholder="write your password" id="password" onChange={(e) => setPassword(e.target.value)} />
 
-                <button type="submit">Submit</button>
+                <button disabled={!username || !password} type="submit">Submit</button>
             </form>
         </div>
     )

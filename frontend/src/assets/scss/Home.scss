@@ -4,6 +4,21 @@
     align-items: center;
     gap: 20px;
 
+    .header {
+        width: 100%;
+        background-color: #ededed;
+        padding: 1%;
+        font-size: 2rem;
+
+        &__link {
+            display: inline-block;
+            text-decoration: none;
+            color: black;
+            width: 20%;
+            text-align: center;
+        }
+    }
+
     &__title {
         font-size: 2rem;
     }

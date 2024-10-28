@@ -5,6 +5,7 @@ import axios from "axios";
 import { TaskModel } from "../models/task.model";
 import EditTask from "../components/Edit";
 import List from "../components/List";
+import { Link } from "react-router-dom";
 
 function Home() {
   const [tasks, setTasks] = useState<TaskModel[]>([]);
@@ -34,11 +35,22 @@ function Home() {
     setIsEdit(false);
     setIsUpdate(isUpdate + 1);
   }
+
+  const onClearSession = () => {
+    sessionStorage.clear();
+    location.reload();
+  }
   
   return (
     <section className="home">
+      <header className="header">
+        <Link className="header__link" to={'/'} onClick={onClearSession}>Logout</Link>
+      </header>
+
       <h1 className="home__title">Task Management App</h1>
+
       <Create onCreate={handleCreateTask}/>
+
       {isEdit && <EditTask task={taskSelected} onUpdate={onUpdate} />}
       {
         tasks.length === 0 ? <p className="home__observation">No Records 😕</p> :
