@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "dev": "NODE_ENV=development nodemon backend/server.js",
+    "dev": "NODE_ENV=development nodemon server.js",
     "test": "jest",
-    "start": "NODE_ENV=production node backend/server.js"
+    "start": "NODE_ENV=production node server.js"
   },
   "keywords": [],
   "author": "",

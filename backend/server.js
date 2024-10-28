@@ -17,6 +17,7 @@ app.use(cors({ origin: '*' }));
 // AUTH
 const authMiddleware = (req, res, next) => {
     const token = req.headers['authorization'];
+
     if (token === 'Bearer test123') {
         next();
     } else {

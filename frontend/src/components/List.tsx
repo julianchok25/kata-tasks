@@ -14,12 +14,14 @@ function List(
 
     const handleCompleted = (task: TaskModel) => {
         axios.put(`http://localhost:3000/tasks/${task._id}`, {
+          data: {
+            completed: task.completed ? false : true
+          }
+        },
+        {
           headers: {
             'Content-Type': 'application/json',
             'authorization': sessionStorage.getItem('token')
-          },
-          data: {
-            completed: task.completed ? false : true
           }
         })
         .then(() => {

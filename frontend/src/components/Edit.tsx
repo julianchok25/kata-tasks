@@ -19,13 +19,15 @@ function EditTask(
 
     const handleUpdateTask = () => {
         axios.put(`http://localhost:3000/tasks/${task._id}`, {
-            headers: {
-              'Content-Type': 'application/json',
-              'authorization': sessionStorage.getItem('token')
-            },
             data: {
                 title: title || task.title,
                 description: description || task.description
+            }
+        },
+        {
+            headers: {
+                'Content-Type': 'application/json',
+                'authorization': sessionStorage.getItem('token')
             }
         })
         .then(() => {

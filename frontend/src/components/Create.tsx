@@ -26,13 +26,15 @@ function Create(props: {onCreate: () => void, onClearSession: () => void}) {
 
   const handleCreateTask = () => {
     axios.post('http://localhost:3000/tasks', {
-      headers: {
-        'Content-Type': 'application/json',
-        'authorization': sessionStorage.getItem('token')
-      },
       data: {
         title,
         description
+      }
+    },
+    {
+      headers: {
+        'Content-Type': 'application/json',
+        'authorization': sessionStorage.getItem('token')
       }
     })
     .then(() => {
