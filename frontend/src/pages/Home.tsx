@@ -16,26 +16,27 @@ function Home() {
   const [taskSelected, setTaskSelected] = useState<TaskModel>({} as TaskModel);
 
   useEffect(() => {
-    axios.get(API_PATH.taskEndpoint, {
-      headers: {
-        'authorization': sessionStorage.getItem('token')
-      }
-    })
-    .then(({data}) => {
-      console.log(data.tasks);
-      setTasks(data.tasks);
-    })
-    .catch(error => {
-      console.error(error);
+    axios.get(API_PATH.taskEndpoint,
+      {
+        headers: {
+          'authorization': sessionStorage.getItem('token')
+        }
+      })
+      .then(({ data }) => {
+        console.log(data.tasks);
+        setTasks(data.tasks);
+      })
+      .catch(error => {
+        console.error(error);
 
-      if (error.response.status === 401) {
-        onClearSession();
-      }
-    });
+        if (error.response.status === 401) {
+          onClearSession();
+        }
+      });
   }, [isUpdate])
 
   const handleCreateTask = () => setIsUpdate(isUpdate + 1);
-  
+
   const handleEdit = (id: unknown) => {
     setIsEdit(true);
     setTaskSelected(tasks.find(task => task._id === id) as TaskModel);
@@ -50,7 +51,7 @@ function Home() {
     sessionStorage.clear();
     location.reload();
   }
-  
+
   return (
     <section className="home">
       <header className="header">
@@ -59,15 +60,15 @@ function Home() {
 
       <h1 className="home__title">Task Management App</h1>
 
-      <Create onCreate={handleCreateTask} onClearSession={onClearSession}/>
+      <Create onCreate={handleCreateTask} onClearSession={onClearSession} />
 
       {isEdit && <EditTask task={taskSelected} onUpdate={onUpdate} onClearSession={onClearSession} />}
       {
         tasks.length === 0 ? <p className="home__observation">No Records 😕</p> :
-        <div className="task-list">
-          <h2>Task List</h2>
-          <List tasks={tasks} onEditIcon={handleEdit} onUpdateValues={onUpdate} onClearSession={onClearSession} />
-        </div>
+          <div className="task-list">
+            <h2>Task List</h2>
+            <List tasks={tasks} onEditIcon={handleEdit} onUpdateValues={onUpdate} onClearSession={onClearSession} />
+          </div>
       }
     </section>
   )

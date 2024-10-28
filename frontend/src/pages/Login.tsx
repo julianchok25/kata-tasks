@@ -9,23 +9,24 @@ function Login({ setToken }: { setToken: (token: string) => void }) {
 
     const handleSubmit = async (e: any) => {
         e.preventDefault();
-        axios.post(API_PATH.loginEndpoint, {
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            data: {
-                username,
-                password
-            }
-        })
-        .then((response) => {
-            const { token } = response.data;
-            setToken(token);
-        })
-        .catch(error => {
-            console.error(error);
-        });
-      }
+        axios.post(API_PATH.loginEndpoint,
+            {
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                data: {
+                    username,
+                    password
+                }
+            })
+            .then((response) => {
+                const { token } = response.data;
+                setToken(token);
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    }
 
     return (
         <div className="login-wrapper">
