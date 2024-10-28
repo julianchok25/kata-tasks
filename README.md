@@ -29,4 +29,8 @@ npm run dev
 
 ## Default Ports
 * backend: 3000
-* frontend: 5173 
+* frontend: 5173
+
+## Routes
+* Only base path /
+** The same path includes `Login Page` and `Home Page`
