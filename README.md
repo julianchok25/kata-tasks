@@ -26,6 +26,9 @@ Set url:
 http://localhost:5173/
 ```
 
+**Storage**
+Recors are persistent in mongodb, not only the session
+
 ## Tech Stack
 * Node.js v20+
 * ExpressJs
