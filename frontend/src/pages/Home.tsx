@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { TaskModel } from "../models/task.model";
 import { API_PATH } from "../utils/servicesPaths";
+import { getCommonHeaders } from "../utils/helpers";
 
 import EditTask from "../components/Edit";
 import Create from "../components/Create"
@@ -18,9 +19,7 @@ function Home() {
   useEffect(() => {
     axios.get(API_PATH.taskEndpoint,
       {
-        headers: {
-          'authorization': sessionStorage.getItem('token')
-        }
+        headers: getCommonHeaders()
       })
       .then(({ data }) => {
         console.log(data.tasks);

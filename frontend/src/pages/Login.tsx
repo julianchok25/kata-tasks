@@ -11,9 +11,6 @@ function Login({ setToken }: { setToken: (token: string) => void }) {
         e.preventDefault();
         axios.post(API_PATH.loginEndpoint,
             {
-                headers: {
-                    'Content-Type': 'application/json'
-                },
                 data: {
                     username,
                     password
