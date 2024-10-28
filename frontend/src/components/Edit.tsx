@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { TaskModel } from '../models/task.model';
 import { API_PATH } from "../utils/servicesPaths";
+import { getCommonHeaders } from "../utils/helpers";
 import '../assets/scss/Edit.scss';
 
 function EditTask(
@@ -27,10 +28,7 @@ function EditTask(
                 }
             },
             {
-                headers: {
-                    'Content-Type': 'application/json',
-                    'authorization': sessionStorage.getItem('token')
-                }
+                headers: getCommonHeaders()
             })
             .then(() => {
                 onUpdate();

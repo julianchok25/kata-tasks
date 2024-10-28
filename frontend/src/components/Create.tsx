@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import axios from 'axios';
 import { API_PATH } from "../utils/servicesPaths";
+import { getCommonHeaders } from "../utils/helpers";
 import '../assets/scss/Create.scss';
 
 function Create(props: { onCreate: () => void, onClearSession: () => void }) {
@@ -34,10 +35,7 @@ function Create(props: { onCreate: () => void, onClearSession: () => void }) {
         }
       },
       {
-        headers: {
-          'Content-Type': 'application/json',
-          'authorization': sessionStorage.getItem('token')
-        }
+        headers: getCommonHeaders()
       })
       .then(() => {
         setTitle('');

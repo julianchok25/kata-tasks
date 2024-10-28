@@ -6,9 +6,9 @@ import { API_PATH } from "../utils/servicesPaths";
 import { getCommonHeaders } from "../utils/helpers";
 
 import EditTask from "../components/Edit";
-import Create from "../components/Create"
+import Create from "../components/Create";
 import List from "../components/List";
-import '../assets/scss/Home.scss'
+import '../assets/scss/Home.scss';
 
 function Home() {
   const [tasks, setTasks] = useState<TaskModel[]>([]);

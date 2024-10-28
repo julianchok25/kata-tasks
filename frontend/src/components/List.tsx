@@ -2,6 +2,7 @@ import axios from "axios";
 import { TaskModel } from "../models/task.model"
 import { BsCircleFill, BsFillCheckCircleFill, BsFillTrashFill, BsPencilSquare } from "react-icons/bs";
 import { API_PATH } from "../utils/servicesPaths";
+import { getCommonHeaders } from "../utils/helpers";
 import '../assets/scss/List.scss';
 
 function List(
@@ -21,10 +22,7 @@ function List(
         }
       },
       {
-        headers: {
-          'Content-Type': 'application/json',
-          'authorization': sessionStorage.getItem('token')
-        }
+        headers: getCommonHeaders()
       })
       .then(() => {
         onUpdateValues();
@@ -41,9 +39,7 @@ function List(
   const handleDelete = (id: unknown) => {
     axios.delete(`${API_PATH.taskEndpoint}/${id}`,
       {
-        headers: {
-          'authorization': sessionStorage.getItem('token')
-        }
+        headers: getCommonHeaders()
       })
       .then(() => {
         onUpdateValues();
