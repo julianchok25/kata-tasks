@@ -1,6 +1,7 @@
-import '../assets/scss/Create.scss';
 import { useState } from 'react';
 import axios from 'axios';
+import { API_PATH } from "../utils/servicesPaths";
+import '../assets/scss/Create.scss';
 
 function Create(props: {onCreate: () => void, onClearSession: () => void}) {
   const {onCreate, onClearSession} = props;
@@ -25,7 +26,7 @@ function Create(props: {onCreate: () => void, onClearSession: () => void}) {
   };
 
   const handleCreateTask = () => {
-    axios.post('http://localhost:3000/tasks', {
+    axios.post(API_PATH.taskEndpoint, {
       data: {
         title,
         description

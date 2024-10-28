@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { TaskModel } from '../models/task.model';
+import { API_PATH } from "../utils/servicesPaths";
 import '../assets/scss/Edit.scss';
 
 function EditTask(
@@ -18,7 +19,7 @@ function EditTask(
     }, [task.title, task.description]);
 
     const handleUpdateTask = () => {
-        axios.put(`http://localhost:3000/tasks/${task._id}`, {
+        axios.put(`${API_PATH.taskEndpoint}/${task._id}`, {
             data: {
                 title: title || task.title,
                 description: description || task.description

@@ -1,6 +1,7 @@
-import { TaskModel } from "../models/task.model"
 import axios from "axios";
+import { TaskModel } from "../models/task.model"
 import { BsCircleFill, BsFillCheckCircleFill, BsFillTrashFill, BsPencilSquare } from "react-icons/bs";
+import { API_PATH } from "../utils/servicesPaths";
 import '../assets/scss/List.scss';
 
 function List(
@@ -13,7 +14,7 @@ function List(
 ) {
 
     const handleCompleted = (task: TaskModel) => {
-        axios.put(`http://localhost:3000/tasks/${task._id}`, {
+        axios.put(`${API_PATH.taskEndpoint}/${task._id}`, {
           data: {
             completed: task.completed ? false : true
           }
@@ -37,7 +38,7 @@ function List(
     }
     
     const handleDelete = (id: unknown) => {
-        axios.delete(`http://localhost:3000/tasks/${id}`, {
+        axios.delete(`${API_PATH.taskEndpoint}/${id}`, {
             headers: {
                 'authorization': sessionStorage.getItem('token')
             }

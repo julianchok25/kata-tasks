@@ -1,11 +1,13 @@
-import Create from "../components/Create"
 import { useState, useEffect } from "react";
-import '../assets/scss/Home.scss'
+import { Link } from "react-router-dom";
 import axios from "axios";
 import { TaskModel } from "../models/task.model";
+import { API_PATH } from "../utils/servicesPaths";
+
 import EditTask from "../components/Edit";
+import Create from "../components/Create"
 import List from "../components/List";
-import { Link } from "react-router-dom";
+import '../assets/scss/Home.scss'
 
 function Home() {
   const [tasks, setTasks] = useState<TaskModel[]>([]);
@@ -14,7 +16,7 @@ function Home() {
   const [taskSelected, setTaskSelected] = useState<TaskModel>({} as TaskModel);
 
   useEffect(() => {
-    axios.get('http://localhost:3000/tasks', {
+    axios.get(API_PATH.taskEndpoint, {
       headers: {
         'authorization': sessionStorage.getItem('token')
       }

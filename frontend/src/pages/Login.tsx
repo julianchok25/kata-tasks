@@ -1,6 +1,7 @@
-import '../assets/scss/Login.scss';
 import { useState } from 'react';
 import axios from 'axios';
+import { API_PATH } from "../utils/servicesPaths";
+import '../assets/scss/Login.scss';
 
 function Login({ setToken }: { setToken: (token: string) => void }) {
     const [username, setUserName] = useState<string>('');
@@ -8,7 +9,7 @@ function Login({ setToken }: { setToken: (token: string) => void }) {
 
     const handleSubmit = async (e: any) => {
         e.preventDefault();
-        axios.post('http://localhost:3000/login', {
+        axios.post(API_PATH.loginEndpoint, {
             headers: {
                 'Content-Type': 'application/json'
             },
