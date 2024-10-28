@@ -3,7 +3,12 @@ import axios from 'axios';
 import { TaskModel } from '../models/task.model';
 import '../assets/scss/Edit.scss';
 
-function EditTask({task, onUpdate}: {task: TaskModel, onUpdate: () => void}) {
+function EditTask(
+    {task, onUpdate, onClearSession}:
+    {
+        task: TaskModel, onUpdate: () => void, onClearSession: () => void
+    }
+) {
     const [title, setTitle] = useState<String | any>('');
     const [description, setDescription] = useState<String | any>('');
 
@@ -15,7 +20,8 @@ function EditTask({task, onUpdate}: {task: TaskModel, onUpdate: () => void}) {
     const handleUpdateTask = () => {
         axios.put(`http://localhost:3000/tasks/${task._id}`, {
             headers: {
-              'Content-Type': 'application/json'
+              'Content-Type': 'application/json',
+              'authorization': sessionStorage.getItem('token')
             },
             data: {
                 title: title || task.title,
@@ -27,6 +33,10 @@ function EditTask({task, onUpdate}: {task: TaskModel, onUpdate: () => void}) {
         })
         .catch(error => {
             console.error(error);
+
+            if (error.response.status === 401) {
+                onClearSession();
+            }
         });
     }
 

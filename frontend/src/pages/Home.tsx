@@ -14,13 +14,21 @@ function Home() {
   const [taskSelected, setTaskSelected] = useState<TaskModel>({} as TaskModel);
 
   useEffect(() => {
-    axios.get('http://localhost:3000/tasks')
+    axios.get('http://localhost:3000/tasks', {
+      headers: {
+        'authorization': sessionStorage.getItem('token')
+      }
+    })
     .then(({data}) => {
       console.log(data.tasks);
       setTasks(data.tasks);
     })
     .catch(error => {
       console.error(error);
+
+      if (error.response.status === 401) {
+        onClearSession();
+      }
     });
   }, [isUpdate])
 
@@ -49,14 +57,14 @@ function Home() {
 
       <h1 className="home__title">Task Management App</h1>
 
-      <Create onCreate={handleCreateTask}/>
+      <Create onCreate={handleCreateTask} onClearSession={onClearSession}/>
 
-      {isEdit && <EditTask task={taskSelected} onUpdate={onUpdate} />}
+      {isEdit && <EditTask task={taskSelected} onUpdate={onUpdate} onClearSession={onClearSession} />}
       {
         tasks.length === 0 ? <p className="home__observation">No Records 😕</p> :
         <div className="task-list">
           <h2>Task List</h2>
-          <List tasks={tasks} onEditIcon={handleEdit} onUpdateValues={onUpdate} />
+          <List tasks={tasks} onEditIcon={handleEdit} onUpdateValues={onUpdate} onClearSession={onClearSession} />
         </div>
       }
     </section>

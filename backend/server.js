@@ -14,11 +14,21 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json());
 // CORS
 app.use(cors({ origin: '*' }));
+// AUTH
+const authMiddleware = (req, res, next) => {
+    const token = req.headers['authorization'];
+    if (token === 'Bearer test123') {
+        next();
+    } else {
+        res.status(401).json({ message: 'Unauthorized' });
+    }
+};
+
 // ROUTES
-app.use('/tasks', taskRoutes);
+app.use('/tasks', authMiddleware, taskRoutes);
 app.use('/login', (_req, res) => {
     res.json({
-        token: 'test123'
+        token: 'Bearer test123'
     });
 });
 

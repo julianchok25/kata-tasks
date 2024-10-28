@@ -3,8 +3,8 @@ import { useState } from 'react';
 import axios from 'axios';
 
 function Login({ setToken }: { setToken: (token: string) => void }) {
-    const [username, setUserName] = useState<string>();
-    const [password, setPassword] = useState<String | any>();
+    const [username, setUserName] = useState<string>('');
+    const [password, setPassword] = useState<String | any>('');
 
     const handleSubmit = async (e: any) => {
         e.preventDefault();
